@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+//import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomePage
   public latitudObservable;
   public longitudObservable;
 
-  constructor(private geolocation: Geolocation) 
+  constructor()//(private geolocation: Geolocation) 
   {
     this.latitudPromesa = 0;
     this.longitudPromesa = 0;
@@ -23,24 +23,28 @@ export class HomePage
 
   obtenerLocalizacionPromesa():void
   {
-    this.geolocation.getCurrentPosition().then((resp) => 
-    {
-      this.latitudPromesa = resp.coords.latitude
-      this.longitudPromesa =  resp.coords.longitude
-     }).catch((error) => 
-     {
-       console.log('Error getting location', error);
-     });
+    // this.geolocation.getCurrentPosition().then((resp) => 
+    // {
+    //   this.latitudPromesa = resp.coords.latitude
+    //   this.longitudPromesa =  resp.coords.longitude
+    //  }).catch((error) => 
+    //  {
+    //    console.log('Error getting location', error);
+    //  });
+    this.latitudPromesa = 10
+    this.longitudPromesa =  20
   }
 
   obtenerLocalizacionObservable():void
   {
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe((data:Geoposition) => 
-    {
-      this.latitudObservable = data.coords.latitude
-      this.longitudObservable = data.coords.longitude
-    });
+    // let watch = this.geolocation.watchPosition();
+    // watch.subscribe((data:Geoposition) => 
+    // {
+    //   this.latitudObservable = data.coords.latitude
+    //   this.longitudObservable = data.coords.longitude
+    // });
+    this.latitudObservable = 30;
+    this.longitudObservable = 40;
   }
 }
 
